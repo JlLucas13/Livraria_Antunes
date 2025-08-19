@@ -1,0 +1,23 @@
+header {
+    background-color: white;
+
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.carrinho_compras{
+    display: flex;
+    align-items: center;
+}
+/*
+#2094d8
+#ef68e1
+#f2a88d
+#f2e98a
+#cbefe5
+*/
