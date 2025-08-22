@@ -1,19 +1,66 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*Estilo do Cabeçalho*/
+
 header {
-    background-color: white;
+    background-color: rgb(236, 94, 249);
 
 }
+
 
 .cabecalho {
     display: flex;
     justify-content: space-between;
+    height: 100px;
 }
 
 
 
+/*Barra de pesquisa*/
+.pesquisa {
+    display: flex;
+    justify-content: space-around;
+}
+
+.barra_de_navegacao {
+    height: 70px;
+    width: 500px;
+}
+
+
+.botao_de_pesquisa {
+    height:75px;
+    width: 70px;
+}
+
+.imagem_botao_de_pesquisa {
+    height: 60px;
+    width: 60px;
+}
+/*Barra de pesquisa*/
+
+
+
+/*Carrinho de compras*/
 .carrinho_compras{
     display: flex;
     align-items: center;
 }
+
+.img_carrinho {
+    height:65px;
+    width: 65px;
+}
+/*Carrinho de compras*/
+
+
+
+
+
+
 /*
 #2094d8
 #ef68e1
