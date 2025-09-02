@@ -16,6 +16,7 @@ header {
     justify-content: space-between;
     height: 100px;
     padding: 5px;
+    border: 3px black solid;
 }
 
 .titulo {
@@ -29,17 +30,20 @@ header {
     display: flex;
     justify-content: space-around;
     padding-top: 25px;
+    
 }
 
 .barra_de_navegacao {
     height: 50px;
     width: 500px;
+    border: 2px black solid;
 }
 
 
 .botao_de_pesquisa {
-    height:55px;
+    height: 55.5px;
     width: 70px;
+    border: 2px black solid;
 }
 
 .imagem_botao_de_pesquisa {
@@ -51,6 +55,11 @@ header {
 
 
 /*Carrinho de compras*/
+
+body {
+    background-color: #d08cef;
+}
+
 .carrinho_compras{
     display: flex;
     align-items: center;
@@ -78,18 +87,32 @@ h2 {
 }
 
 .livros {
+    padding-top: 10px;
+    text-align: center;
     border: 2px solid black;
     margin: 10px;
     width: 350px;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.compra {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+/*Rodape do site*/
+
+footer {
+    
+    background-color: #4F4F4F;
+    border: black solid 3px;
+}
+
+.rodape {
+    color: white;
     
 }
 
 
-
-/*
-#2094d8
-#ef68e1
-#f2a88d
-#f2e98a
-#cbefe5
-*/
