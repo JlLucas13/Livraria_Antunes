@@ -79,9 +79,11 @@ h2 {
 /*Carrinho de compras*/
 
 
-/*Corpo do site, onde aparece os livros para compra*/
-
-.catalogo_livros{
+/*Corpo do site*/
+/*.lista_carrinho {
+    
+}*/
+.livros_carrinho{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -97,10 +99,11 @@ h2 {
     
 }
 
-.compra {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 10px;
+.comprar_livros {
+    margin-top: 10px;
+    border: 1px solid black;
+    height: 390px;
+    width: 50%;
 }
 
 /*Corpo do site*/
