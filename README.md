@@ -7,7 +7,7 @@
 * **Aplicação de estoque**: para monitorar os pedidos online e gerenciar a logística de entrega.
 * **Banco de dados**: para armazenar informações sobre livros, vendas e clientes.
 * **Sistema de cadastro de novos livros**: para facilitar a inclusão e atualização do catálogo.
-* **EPI (Estação de Processamento de Informação)**: para integração e gerenciamento dos dados das diferentes aplicações.
+* **API**: para integração e gerenciamento dos dados das diferentes aplicações.
 
 Este projeto visa oferecer uma solução completa e integrada, simulando o dia a dia de uma livraria moderna e digital.
 
