@@ -1,0 +1,4 @@
+Para a parte de estoque e logistica, vou criar uma interface simples apenas para as seguintes funcionalidades
+1 - Adicionar novos livros ao estoque que será exibido no seguinte
+2 - Controlar o fluxo de livros novos que chegam de compra adicionando eles ao estoque
+3 - Controlar e manipular o estoque conforme a necessidade, poder visualizar livros e suas quantidades e etc..

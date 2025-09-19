@@ -83,10 +83,15 @@ h2 {
 /*.lista_carrinho {
     
 }*/
+
+
+
 .livros_carrinho{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    
+
+    
 }
 
 .livros {
@@ -97,13 +102,18 @@ h2 {
     width: 350px;
     background-color: rgb(255, 255, 255);
     
+    
 }
 
 .comprar_livros {
     margin-top: 10px;
-    border: 1px solid black;
-    height: 390px;
+    border: 2px solid rgb(0, 0, 0);
+    height: 50%;
     width: 50%;
+    
+
+    
+    
 }
 
 /*Corpo do site*/
