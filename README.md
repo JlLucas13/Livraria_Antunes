@@ -9,6 +9,6 @@
 * **Sistema de cadastro de novos livros**: para facilitar a inclusão e atualização do catálogo.
 * **API**: para integração e gerenciamento dos dados das diferentes aplicações.
 
-Este projeto visa oferecer uma solução completa e integrada, simulando o dia a dia de uma livraria moderna e digital.
+#### Este projeto visa oferecer uma solução completa e integrada, simulando o dia a dia de uma livraria moderna e digital.
 
 ...
