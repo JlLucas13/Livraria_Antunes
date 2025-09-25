@@ -24,12 +24,12 @@ def criar_banco():
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS livros (
                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                   qrcode TEXT UNIQUE,
                    nome TEXT,
+                   qrcode TEXT UNIQUE,
                    preco FLOAT,
                    capa_url TEXT,
                    descricao TEXT,
-                   quantidade_estoque INT)''')
+                   quantidade_estoque INTERGER DEFAULT 0)''')
     
 #OBSERVAÇÃO, AINDA FALTA DESENHAR COMO SERÁ ADICIONADO OS TEMAS DE CADA LIVRO, EXEMPLO: AÇÃO, AVENTURA, ROMANCE E ETC...
 # ESTOU PROCURANDO A MELHOR OPÇÃO PARA ADICIONAR OS TEMAS NO BANCO DE DADOS, JÁ QUE UM LIVRO PODE CONTER DEZENAS DELES E NÃO É VIAVEL CRIAR VÁRIAS COLIUNAS DIFERENTES PARA ADICIONAR O TEMA DE CADA LIVRO SENDO QUE ELES VÃO SER DIFERENTES ENTRE SI

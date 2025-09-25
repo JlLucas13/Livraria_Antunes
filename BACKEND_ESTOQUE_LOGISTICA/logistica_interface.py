@@ -9,7 +9,35 @@ def main(page: ft.Page):
     
     #Página onde será feito o cadastro dos livros
     def cadastro_livros(e):
-        pass
+        
+        #Comando que exclui os elementos da página anterior permitindo que os novos elementos apareção na págiona atual
+        page.controls.clear()
+        
+        #Sessão onde irá se criar uma tabela de preenchimento para cadastrar livros novos, os livros cadastrados aqui vão ser enviados para o banco de dados e exibido no site
+        nome_livro = ft.TextField(
+            label = "Nome do Livro"
+        )
+
+        #Rever o qrcode pois creio que ele pode ser inserido automaticamente
+        '''
+        qrcode = ft.TextField(
+            label = "Ensira nome do QRcode"
+        )
+        '''
+
+        preco_livro = ft.TextField(
+            label = "Digite o preço do livro"
+        )
+
+        '''Fora esses itens ainda tem a capa, preciso ver como adicionar ela, já quie será através de um 'url' '''
+
+        descricao_livro = ft.TextField(
+            label = "Descrição do livro"
+        )
+
+
+
+        page.add(nome_livro)
 
     #Botão que leva até a aba de cadastro de novos livros (Essa aba vai ficar dentro da parte de manipulação dos livros, onde se visualiza o estoque geral, entretanto vou deixar por aqui temporariamente apenas para facilitar a criação do sistema, posteriormente ele vai mudar para outro lugar)
     btn_cadastro_de_livros = ft.ElevatedButton(
