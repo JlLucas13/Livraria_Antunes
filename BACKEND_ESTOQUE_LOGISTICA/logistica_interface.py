@@ -1,4 +1,5 @@
 import flet as ft
+import requests
 
 #Comando que cria a primeira página da interface
 def main(page: ft.Page):
@@ -18,12 +19,12 @@ def main(page: ft.Page):
             label = "Nome do Livro"
         )
 
-        #Rever o qrcode pois creio que ele pode ser inserido automaticamente
-        '''
+        '''#Rever o qrcode pois creio que ele pode ser inserido automaticamente'''
+        
         qrcode = ft.TextField(
             label = "Ensira nome do QRcode"
         )
-        '''
+        
 
         preco_livro = ft.TextField(
             label = "Digite o preço do livro"
@@ -35,9 +36,20 @@ def main(page: ft.Page):
             label = "Descrição do livro"
         )
 
+        btn_enviar = ft.ElevatedButton(
+            text = "CADASTRAR LIVRO",
+            on_click = enviar_livros
+        )
 
+        def enviar_livros():
+            livros = {
+                "nome":nome_livro.value
+            }
+        
 
-        page.add(nome_livro)
+        #Sessão onde os dados coletados serão coletados e mandados via json para o sistema
+
+        page.add(nome_livro, qrcode, preco_livro, descricao_livro, btn_enviar)
 
     #Botão que leva até a aba de cadastro de novos livros (Essa aba vai ficar dentro da parte de manipulação dos livros, onde se visualiza o estoque geral, entretanto vou deixar por aqui temporariamente apenas para facilitar a criação do sistema, posteriormente ele vai mudar para outro lugar)
     btn_cadastro_de_livros = ft.ElevatedButton(
