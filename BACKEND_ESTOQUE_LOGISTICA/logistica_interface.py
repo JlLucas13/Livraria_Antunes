@@ -19,45 +19,39 @@ def main(page: ft.Page):
             label = "Nome do Livro"
         )
 
-        '''#Rever o qrcode pois creio que ele pode ser inserido automaticamente'''
         
+        '''#Rever o qrcode pois creio que ele pode ser inserido automaticamente
         qrcode = ft.TextField(
             label = "Ensira nome do QRcode"
         )
-        
-
         preco_livro = ft.TextField(
             label = "Digite o preço do livro"
         )
-
-        '''Fora esses itens ainda tem a capa, preciso ver como adicionar ela, já quie será através de um 'url' '''
-
+        Fora esses itens ainda tem a capa, preciso ver como adicionar ela, já quie será através de um 'url'
         descricao_livro = ft.TextField(
             label = "Descrição do livro"
-        )
+        )'''
+        
+        #A função enviar_livros vai pegar todos os valores digitados e coletar ele e enviar via json para o backend, Observação, toda função que realiza algo, como um "evento", necessita de um parametro para isso, nesse caso foi o "e", enviar_livros(e), mas pode ser qualquer um, futuramente devo atualizar e escrever evento em todas as funões de evento
+        def enviar_livros(e):
+            livros = {
+                "nome": nome_livro.value
+            }
+
+            requests.post("http://127.0.0.1:5000/BACKEND_ESTOQUE_LOGISTICA", json=livros)
 
         btn_enviar = ft.ElevatedButton(
             text = "CADASTRAR LIVRO",
             on_click = enviar_livros
         )
 
-        def enviar_livros():
-            livros = {
-                "nome":nome_livro.value
-            }
-        
-
-        #Sessão onde os dados coletados serão coletados e mandados via json para o sistema
-
-        page.add(nome_livro, qrcode, preco_livro, descricao_livro, btn_enviar)
+        page.add(nome_livro, btn_enviar)
 
     #Botão que leva até a aba de cadastro de novos livros (Essa aba vai ficar dentro da parte de manipulação dos livros, onde se visualiza o estoque geral, entretanto vou deixar por aqui temporariamente apenas para facilitar a criação do sistema, posteriormente ele vai mudar para outro lugar)
     btn_cadastro_de_livros = ft.ElevatedButton(
         text="Cadastro de Livros",
         on_click=cadastro_livros)
     
-    
-
     #Sessão onde fica armazenados os elementos da página
     page.add(btn_cadastro_de_livros)
 

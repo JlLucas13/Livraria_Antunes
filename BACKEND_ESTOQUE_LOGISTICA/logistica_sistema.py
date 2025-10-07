@@ -1,6 +1,7 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 import os
 import sqlite3
+
 
 #Inicia o flask
 app = Flask(__name__)
@@ -9,7 +10,7 @@ app = Flask(__name__)
 livros_db = os.path.join(os.path.dirname(__file__), '..', 'BANCO_DADOS', 'livros.db')
 
 #Conetar ao banco de dados
-def conctar_db():
+def conectar_db():
     #conn = variavel que conctada no banco através do sql.connct
     conn = sqlite3.connect(livros_db)
     return conn
@@ -17,7 +18,7 @@ def conctar_db():
 #Funsão que cria o banco de dados caso ele não exista assim como suas tabelas
 def criar_banco():
     #Concectar ao banco de dados
-    conn = conctar_db()
+    conn = conectar_db()
     #Cria um cursor para manipular o sql através de comandos
     cursor = conn.cursor()
     #Executa as funções do cursor
@@ -40,6 +41,22 @@ def criar_banco():
     #Fecha conexão
     conn.close()
 
+@app.route("/BACKEND_ESTOQUE_LOGISTICA", methods=["POST"])
+def cadastro_livros():
+
+    #Variavel que faz a coleta dos dados enviados do Front-end através do JSON e tranforma em um dicionário
+    livros = request.json
+
+    #Variaveis que coleta cada dado separadamente do dicionário, para assim colocar em sua respectiva coluna no Banco de Dados 
+    nome = livros['nome']
+
+    conn = conectar_db()
+    cursor = conn.cursor()
+    cursor.execute(''' INSERT INTO livros (nome) VALUES (?)''', (nome,)) #Insere os valores no banco
+    conn.commit() #Salva as mudanças
+    conn.close() #fecha a conexão
+
+    return jsonify({"status": "sucesso"}), 201 #Retorna o status de sucesso para o front OBS: Toda rota flask precisa retornar um https
 
 if __name__ == '__main__':
     criar_banco() #garante que o banco e tabela seja criado ao iniciar o sistema
