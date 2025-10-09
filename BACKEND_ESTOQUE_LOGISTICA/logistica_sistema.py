@@ -50,9 +50,20 @@ def cadastro_livros():
     #Variaveis que coleta cada dado separadamente do dicionário, para assim colocar em sua respectiva coluna no Banco de Dados 
     nome = livros['nome']
 
+
+
     conn = conectar_db()
     cursor = conn.cursor()
-    cursor.execute(''' INSERT INTO livros (nome) VALUES (?)''', (nome,)) #Insere os valores no banco
+
+    #Sessão de código responsavel pela criação automática de um texto "Livro:1/Livro:2/Livro:3..." que será cadastrado na coluna do QRCODE, para gerar um código futuramente
+    cursor.execute("SELECT COUNT(*) FROM livros") #Conta o total de linhas no banco de dados e retorna o valor
+    contador = cursor.fetchone()[0] #Armazena o número retornado do comando acima
+
+    #Gera o texto do QRCODE com base no número total de linhas, somando sempre +1
+    qrcode = f'Livro:{contador + 1}'
+
+
+    cursor.execute(''' INSERT INTO livros (nome, qrcode) VALUES (?, ?)''', (nome, qrcode,)) #Insere os valores no banco
     conn.commit() #Salva as mudanças
     conn.close() #fecha a conexão
 
