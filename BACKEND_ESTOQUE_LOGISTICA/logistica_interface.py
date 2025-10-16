@@ -19,18 +19,30 @@ def main(page: ft.Page):
             label = "Nome do Livro"
         )
 
-        
-        '''#Rever o qrcode pois creio que ele pode ser inserido automaticamente
-        qrcode = ft.TextField(
-            label = "Ensira nome do QRcode"
+        autor = ft.TextField(
+            label = "Nome do Livro"
         )
-        preco_livro = ft.TextField(
-            label = "Digite o preço do livro"
+
+        sinopse = ft.TextField(
+            label = "Adicione a Sinopse do Livro"
         )
-        Fora esses itens ainda tem a capa, preciso ver como adicionar ela, já quie será através de um 'url'
-        descricao_livro = ft.TextField(
-            label = "Descrição do livro"
-        )'''
+
+
+
+        #-------------------------------------------------------------------------------------------------------------------------------
+        #O código a seguir é faz parte do cadastro da capa de um livro, onde a foto da capa vai ser selecionada do arquivo do compuitador e inserido na pasta local do projeto
+        file_picker = ft.FilePicker()
+        page.overlay.append(file_picker)
+
+        capa = ft.ElevatedButton(
+        text="Selecionar imagem",  # texto exibido no botão
+        on_click=lambda _: file_picker.pick_files(
+            allow_multiple=False,  # impede que vários arquivos sejam escolhidos
+            allowed_extensions=["jpg", "jpeg", "png"]  # restringe a tipos de imagem
+        ))
+        #capa = ft.Image()
+        #-------------------------------------------------------------------------------------------------------------------------------
+
         
         #A função enviar_livros vai pegar todos os valores digitados e coletar ele e enviar via json para o backend, Observação, toda função que realiza algo, como um "evento", necessita de um parametro para isso, nesse caso foi o "e", enviar_livros(e), mas pode ser qualquer um, futuramente devo atualizar e escrever evento em todas as funões de evento
         def enviar_livros(e):
@@ -45,7 +57,7 @@ def main(page: ft.Page):
             on_click = enviar_livros
         )
 
-        page.add(nome_livro, btn_enviar)
+        page.add(nome_livro, autor, sinopse, capa, btn_enviar)
 
     #Botão que leva até a aba de cadastro de novos livros (Essa aba vai ficar dentro da parte de manipulação dos livros, onde se visualiza o estoque geral, entretanto vou deixar por aqui temporariamente apenas para facilitar a criação do sistema, posteriormente ele vai mudar para outro lugar)
     btn_cadastro_de_livros = ft.ElevatedButton(

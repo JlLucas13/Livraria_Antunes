@@ -6,7 +6,7 @@ import sqlite3
 #Inicia o flask
 app = Flask(__name__)
 
-#cria o caminho dos códigos a baixo até o banco de dados
+#cria um banco de dados chamado livros.db na pasta BANCO_DADOS, assim como o caminho até o banco
 livros_db = os.path.join(os.path.dirname(__file__), '..', 'BANCO_DADOS', 'livros.db')
 
 #Conetar ao banco de dados
@@ -21,20 +21,41 @@ def criar_banco():
     conn = conectar_db()
     #Cria um cursor para manipular o sql através de comandos
     cursor = conn.cursor()
+
+    #-----Sessão onde vai ocorrer a criação da tabela de livros no banco de dados-----
+    
     #Executa as funções do cursor
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS livros (
                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
                    nome TEXT,
-                   qrcode TEXT UNIQUE,
-                   preco FLOAT,
+                   autor TEXT,
                    capa_url TEXT,
-                   descricao TEXT,
-                   quantidade_estoque INTERGER DEFAULT 0)''')
-    
-#OBSERVAÇÃO, AINDA FALTA DESENHAR COMO SERÁ ADICIONADO OS TEMAS DE CADA LIVRO, EXEMPLO: AÇÃO, AVENTURA, ROMANCE E ETC...
-# ESTOU PROCURANDO A MELHOR OPÇÃO PARA ADICIONAR OS TEMAS NO BANCO DE DADOS, JÁ QUE UM LIVRO PODE CONTER DEZENAS DELES E NÃO É VIAVEL CRIAR VÁRIAS COLIUNAS DIFERENTES PARA ADICIONAR O TEMA DE CADA LIVRO SENDO QUE ELES VÃO SER DIFERENTES ENTRE SI
+                   sinopse TEXT,
+                   preco FLOAT,                  
+                   quantidade_estoque INTERGER DEFAULT 0,
+                   qrcode TEXT UNIQUE)''')
+    #------------------------------------------------------------------------------------
 
+
+    #Sessão onde vai criar a  tabela de temas/categoria de livros, como por exemplo, ação, aventura, fantasia e etc...
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS temas (
+                   ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                   tema TEXT)''')
+    #--------------------------------------------------------
+
+
+    #-----Sessão onde vai ficar a tabela que liga o livro a seu tema-----
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS livro_tema (
+                   ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                   livro_id INTEGER NOT NULL,
+                   tema_id INTEGER NOT NULL,
+                   FOREIGN KEY (livro_id) REFERENCES livros (id),
+                   FOREIGN KEY (tema_id) REFERENCES temas (id)
+                   );''')
+    #--------------------------------------------------------
 
     #Salva as mudanças
     conn.commit()
